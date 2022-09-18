@@ -1,0 +1,89 @@
+We are here with a very sweet application that everyone will love.
+You are expected to complete the application by following the
+instructions on the next page and share these
+secret and beautiful recipes with your fans.
+Please note that this application needs to be prepared with using Spring Boot.
+Do not forget! You have time till Sunday to code, on Sunday we will write this
+application together from scratch
+---------------------------------------------------------------------------------
+While building this application you will need classes, enum and interfaces
+Let’s start with enums
+RecipeType: Values
+1. Breakfast
+2. Lunch
+3. Desert
+4. Appetizer
+5. Baked
+6. Soup
+7. Vegetarian
+QuantityType: Values
+1. Ounce
+2. LB
+3. Tbsp
+-----------------------------------------------------------------------------------------
+
+Classes
+Recipe: Variables
+1. id
+2. name
+3. duration
+4. preparation
+5. ingredients (list of object)
+6. recipeType (enum)
+Ingredients: Variables
+1. name
+2. quantity
+3. quantityType (enum)
+-------------------------------------------------------------------------------------------
+Interfaces
+RecipeService: methods
+1. prepareRecipe
+RecipeRepository: methods
+1. saveRecipe
+ShareService:
+1. share
+-----------------------------------------------------------------------------------------
+Interface responsibilities
+RecipeService needs to have 1 implementation, you need to inject recipeRepository
+And shareService inside it. There will be 1 method called prepareRecipe. Inside the
+prepareRecipe you need to create Recipe objects. You need to initialize list of
+ingredients and using JavaFaker (it is provided more information in next slides)
+After creation, you need to call recipeRepository’s save method after saving you will
+call shareService’s share method. If everything works properly prepareRecipe method
+should return true.
+RecipeRepository needs to have 1 implementation, there will be 1 method save
+that it will take Recipe as an input parameter. You need to have a list
+Recipe objects so you can save prepared Recipes after adding to list this method
+should return true.
+-----------------------------------------------------------------------------------------
+Interface responsibilities
+ShareService needs to have 2 implementation: FacebookShareService and
+InstagramShareService. There will be 1 method as share that it will take Recipe
+as an input parameter. When share method called you can just simply write
+something on console Both implementation can work but FacebookShareService
+Will be Primary.
+---------------------------------------------------------------------------------------
+Generating data
+You will directly call prepareRecipe on recipeService from Main. You need to
+create 100 recipe using for loop.
+While recipe object creation you will need some data. In this point you are going to use
+JavaFaker library. As a result you need to inject the faker class to recipeService.
+As you can see on screenshots, every time you call the faker’s methods it will return
+different results and also Faker has many options that you can create fake data with
+different types
+-----------------------------------------------------------------------------------------
+Some of options provided by Faker
+<dependency>
+ <groupId>com.github.javafaker</groupId>
+ <artifactId>javafaker</artifactId>
+ <version>1.0.2</version>
+</dependency>
+----------------------------------------------------------------------------------------
+
+Who is the creator of these fantastic recipes?
+After creating good recipes, you would like mention creator of these beautiful recipes right!!
+Provide your name, surname, email and social media links. Sure you are welcome to add more details.
+How you will do that?
+You will get information's from properties file. You can use @Value or @ConfigurationProperties
+it depends on your choice.
+How you will write the information before application stop, Please have a look at @Predestroy annotation.
